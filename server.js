@@ -4,6 +4,10 @@ const app = express();
 const hbs = require('hbs');
 require('./hbs/helpers');
 
+//when we upload the app and need to know the port.
+//if there is no port then we are in local and we set it to 3000
+const port = process.env.PORT || 3000;
+
 //middleware for the static public content.
 app.use(express.static(__dirname + '/public'));
 
@@ -25,6 +29,6 @@ app.get('/about', (req, res) => {
     });
 })
 
-app.listen(3000, () => {
-    console.log('Listening requests on port 3000');
+app.listen(port, () => {
+    console.log(`Listening requests on port ${port}`);
 })
